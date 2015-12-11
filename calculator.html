@@ -43,10 +43,15 @@ body {
 /* <![CDATA[  */
 var lastClickWasEnter = false;
 var display = "";
+var Oportators = ['+','-','/','*'];
 
 function updateScreen(pressed) {
+	if (lastClickWasEnter === true && Oportators.indexOf(pressed) === -1) {
+		ClearValues();
+	};
 	display = document.getElementById("Screen").value;
 	document.getElementById("Screen").value = display + pressed;
+	lastClickWasEnter = false;
 };
 
 function ClearValues(){
