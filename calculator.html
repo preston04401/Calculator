@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<style>
+#Screen {
+	margin: auto;
+	width: 120px;
+	height: 25px;
+	border: 1px solid #999;
+	text-align: right;
+	background-color: #ccc;
+}
+.calc {
+	margin: auto;
+	text-align: center;
+}
+input[type=button] {
+	width: 40px;
+	height: 40px;
+}
+#ClearButton {
+	width: 85px;
+	height: 40px;
+}
+</style>
+
+<script type="text/javascript">
+/* <![CDATA[  */
+
+var display = "";
+
+function updateScreen(pressed) {
+	display = document.getElementById("Screen").value;
+	document.getElementById("Screen").value = display + pressed;
+};
+
+function ClearValues(){
+	display = "";
+	document.getElementById("Screen").value = "";
+};
+
+function CalculateData(){
+	document.getElementById("Screen").value = eval(document.getElementById("Screen").value);
+}
+
+/*  ]]> */
+</script>
+
+<head>
+
+	</head>
+	<body>
+<h1 align="center">Online Calculator</h1>
+
+<div class="calc">
+<input type="text" id="Screen" name="Screen"/>
+<br/>
+<input type="button" id="ClearButton" value="Clear" 
+	onClick="ClearValues()" />
+	<br/>
+<input type="button" value="7" onClick="updateScreen('7')"  />
+<input type="button" value="8" onClick="updateScreen('8')"  />
+<input type="button" value="9" onClick="updateScreen('9')"  />
+<input type="button" value="/" onClick="updateScreen('/')"  />
+<br/>
+<input type="button" value="4" onClick="updateScreen('4')"  />
+<input type="button" value="5" onClick="updateScreen('5')"  />
+<input type="button" value="6" onClick="updateScreen('6')"  />
+<input type="button" value="*" onClick="updateScreen('*')"  />
+<br/>
+<input type="button" value="1" onClick="updateScreen('1')"  />
+<input type="button" value="2" onClick="updateScreen('2')"  />
+<input type="button" value="3" onClick="updateScreen('3')"  />
+<input type="button" value="-" onClick="updateScreen('-')"  />
+<br/>
+<input type="button" value="." onClick="updateScreen('.')"  />
+<input type="button" value="0" onClick="updateScreen('0')"  />
+<input type="button" value="=" onClick="CalculateData()"  />
+<input type="button" value="+" onClick="updateScreen('+')"  />
+<br/>
+</div>
+
+	</body>
+</html>
