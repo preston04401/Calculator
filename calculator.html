@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+<html class="container-fluid">
+
 <style>
+body {
+	background-color: #CDB79E;
+}
 #Screen {
 	margin: auto;
-	width: 120px;
+	width: 135px;
 	height: 25px;
 	border: 1px solid #999;
 	text-align: right;
@@ -11,21 +16,32 @@
 }
 .calc {
 	margin: auto;
+	background-color: grey;
 	text-align: center;
+	border: 1px solid;
+	width: 180px;
+	padding-bottom: 3px;
 }
-input[type=button] {
+.row {
+	padding: 3px;
+}
+
+/*input[type=button] {
 	width: 40px;
 	height: 40px;
-}
+}*/
 #ClearButton {
-	width: 85px;
-	height: 40px;
+	width: 100px;
+	height: 25px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 2px;
 }
 </style>
 
 <script type="text/javascript">
 /* <![CDATA[  */
-
+var lastClickWasEnter = false;
 var display = "";
 
 function updateScreen(pressed) {
@@ -40,44 +56,81 @@ function ClearValues(){
 
 function CalculateData(){
 	document.getElementById("Screen").value = eval(document.getElementById("Screen").value);
+	lastClickWasEnter = true;
 }
+
 
 /*  ]]> */
 </script>
 
 <head>
-
 	</head>
 	<body>
-<h1 align="center">Online Calculator</h1>
+<h1 class="text-center">Online Calculator</h1>
 
-<div class="calc">
-<input type="text" id="Screen" name="Screen"/>
-<br/>
-<input type="button" id="ClearButton" value="Clear" 
-	onClick="ClearValues()" />
-	<br/>
-<input type="button" value="7" onClick="updateScreen('7')"  />
-<input type="button" value="8" onClick="updateScreen('8')"  />
-<input type="button" value="9" onClick="updateScreen('9')"  />
-<input type="button" value="/" onClick="updateScreen('/')"  />
-<br/>
-<input type="button" value="4" onClick="updateScreen('4')"  />
-<input type="button" value="5" onClick="updateScreen('5')"  />
-<input type="button" value="6" onClick="updateScreen('6')"  />
-<input type="button" value="*" onClick="updateScreen('*')"  />
-<br/>
-<input type="button" value="1" onClick="updateScreen('1')"  />
-<input type="button" value="2" onClick="updateScreen('2')"  />
-<input type="button" value="3" onClick="updateScreen('3')"  />
-<input type="button" value="-" onClick="updateScreen('-')"  />
-<br/>
-<input type="button" value="." onClick="updateScreen('.')"  />
-<input type="button" value="0" onClick="updateScreen('0')"  />
-<input type="button" value="=" onClick="CalculateData()"  />
-<input type="button" value="+" onClick="updateScreen('+')"  />
-<br/>
+<div class="calc"><!--START CALCULATOR -->
+<div class="row">
+	<input type="text" id="Screen" name="Screen"  />
+</div>
+<div class="row">
+		<button class="btn " id="ClearButton" onClick="ClearValues()">Clear</button>
+</div>
+<div class="row">
+	<button class="btn" onClick="updateScreen('7')">7</button>
+	<button class="btn" onClick="updateScreen('8')">8</button>
+	<button class="btn" onClick="updateScreen('9')">9</button>
+	<button class="btn" onClick="updateScreen('/')">/</button>
+</div>
+<div class="row">
+	<button class="btn" onClick="updateScreen('4')">4</button>
+	<button class="btn" onClick="updateScreen('5')">5</button>
+	<button class="btn" onClick="updateScreen('6')">6</button>
+	<button class="btn" onClick="updateScreen('*')">*</button>
+</div>
+<div class="row">
+	<button class="btn" onClick="updateScreen('1')">1</button>
+	<button class="btn" onClick="updateScreen('2')">2</button>
+	<button class="btn" onClick="updateScreen('3')">3</button>
+	<button class="btn" onClick="updateScreen('-')">-</button>
+</div>
+<div class="row">
+	<button class="btn" onClick="updateScreen('.')">.</button>
+	<button class="btn" onClick="updateScreen('0')">0</button>
+	<button class="btn" onClick="CalculateData()">=</button>
+	<button class="btn" onClick="updateScreen('+')">+</button>
 </div>
 
+</div><!--end of calculator-->
+
+<!--  PRIOR NON BOOTSTRAP SETUP.
+<div class="calc">
+	<input type="text" id="Screen" name="Screen"/>
+	<br/>
+	<div class="row">
+		<input type="button" id="ClearButton" value="Clear" 
+		onClick="ClearValues()" />
+		<br/>
+	<input type="button" value="7" onClick="updateScreen('7')"  />
+	<input type="button" value="8" onClick="updateScreen('8')"  />
+	<input type="button" value="9" onClick="updateScreen('9')"  />
+	<input type="button" value="/" onClick="updateScreen('/')"  />
+	<br/>
+	<input type="button" value="4" onClick="updateScreen('4')"  />
+	<input type="button" value="5" onClick="updateScreen('5')"  />
+	<input type="button" value="6" onClick="updateScreen('6')"  />
+	<input type="button" value="*" onClick="updateScreen('*')"  />
+	<br/>
+	<input type="button" value="1" onClick="updateScreen('1')"  />
+	<input type="button" value="2" onClick="updateScreen('2')"  />
+	<input type="button" value="3" onClick="updateScreen('3')"  />
+	<input type="button" value="-" onClick="updateScreen('-')"  />
+	<br/>
+	<input type="button" value="." onClick="updateScreen('.')"  />
+	<input type="button" value="0" onClick="updateScreen('0')"  />
+	<input type="button" value="=" onClick="CalculateData()"  />
+	<input type="button" value="+" onClick="updateScreen('+')"  />
+	<br/>
+</div>
+-->
 	</body>
 </html>
